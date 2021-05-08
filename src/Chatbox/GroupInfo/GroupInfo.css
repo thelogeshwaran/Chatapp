@@ -1,0 +1,105 @@
+.group{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    background-color: #ededed;
+    border-left: 1.5px solid lightgray;
+}
+.group__header{
+    display: flex;
+    height: 15%;
+    align-items: flex-end;
+    padding: 5%;
+    background-color: #00BFA5;
+    color: white;
+}
+.group__header > h3 {
+    margin-left: 5%;
+}
+
+.group__body{
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 10%;
+}
+
+.group__avatar{
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.group__input{
+    height: 0;
+    width: 0;
+    opacity: 0;
+}
+
+
+.group__info{
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    padding: 4%;
+}
+
+.group__edit{
+    display: flex;
+    align-items: center;
+    
+}
+.group__edit > input{
+    width: 90%;
+    height: 30px;
+    border: none;
+    background-color: inherit;
+    color: black;   
+    font-size: 1.2rem;
+}
+
+.group__desinfo{
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    padding: 3% 4%;
+    margin: 2% 0%;
+}
+
+.group__desedit{
+    display: flex;
+    align-items: center;
+    
+}
+.group__desedit > input{
+    width: 90%;
+    height: 30px;
+    border: none;
+    background-color: inherit;
+    color: black;   
+    font-size: 1rem;
+}
+
+
+.group__created{
+    font-size: 0.9em;
+}
+
+
+.group__infohead{
+    color:#00BFA5 ;
+    font-weight: 600;
+}
+
+.group__accordion{
+    margin: 2% 0%;
+}
+
+.accordion__head{
+    color:#00BFA5 ;
+    font-weight: 600;
+}
+

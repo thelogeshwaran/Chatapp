@@ -1,0 +1,46 @@
+.newchat{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.newchat__header{
+    display: flex;
+    height: 15%;
+    align-items: flex-end;
+    padding: 5%;
+    background-color: #00BFA5;
+    color: white;
+}
+
+.newchat__header > h2 {
+    margin-left: 5%;
+}
+
+.search_container{
+    display: flex;
+    align-items: center;
+    background-color: white;
+    width: 95%;
+    height: 35px;
+    border-radius: 25px;
+    margin: 2% 2%;
+    padding: 20px;
+    
+}
+.newchat__search{
+    display: flex;
+    align-items: center;
+    background-color: #f6f6f6;
+    height: 50px;
+    padding: 30px;
+}
+
+.search__input {
+    width: 100%;
+}
+
+.search__input > input{
+    width: 100%;
+    border: none;
+   font-size: 1.2rem;
+}

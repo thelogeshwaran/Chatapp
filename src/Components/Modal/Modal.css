@@ -1,0 +1,16 @@
+.modal{
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100vw;
+    height: 100vh;
+    background:  rgba(0,0,0,0.5);
+  }
+  
+  .modal img{
+    display: block;
+    max-width: 60%;
+    max-height: 80%;
+    margin: 100px auto;
+    border: 3px solid white;
+  }
