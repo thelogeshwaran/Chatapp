@@ -219,7 +219,7 @@ function Chatbox() {
                           open={Boolean(anchor)}
                           onClose={handleExpandClose}
                         >
-                          <MenuItem onClick={()=>{handleExpandClose()}}>Reply</MenuItem>
+                          {/* <MenuItem onClick={()=>{handleExpandClose()}}>Reply</MenuItem> */}
                           <MenuItem onClick={()=>{handleStar();handleExpandClose(); }}>Star Message</MenuItem>
                           <MenuItem onClick={()=>{handleExpandClose(); handleDeleteMessage();}}>Delete Message</MenuItem>
                         </Menu>
@@ -249,7 +249,7 @@ function Chatbox() {
                           open={Boolean(anchor)}
                           onClose={handleExpandClose}
                         >
-                          <MenuItem onClick={()=>{handleExpandClose()}}>Reply</MenuItem>
+                          {/* <MenuItem onClick={()=>{handleExpandClose()}}>Reply</MenuItem> */}
                           <MenuItem onClick={()=>{handleStar();handleExpandClose(); }}>Star Message</MenuItem>
                           <MenuItem onClick={()=>{handleExpandClose(); handleDeleteMessage();}}>Delete Message</MenuItem>
                         </Menu>

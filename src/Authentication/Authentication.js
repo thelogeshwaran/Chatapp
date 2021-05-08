@@ -95,11 +95,13 @@ function Authentication() {
                         <label for="login-password">Password</label>
                         <input id="login-password" type="password" required value={password} onChange={(e) => setPassword(e.target.value)}></input>
                     </div>
+                    <div>
+                    Credentials : Email - testuser@gmail.com 
+                    <br/> password : test@45
+                    </div>
                     <button type="submit" className="btn-login" >Login</button>
                 </form>
-                <div>
-                    Credentials : Email - testuser@gmail.com | password : test@45
-                    </div>
+                
                 </div>
 
 
