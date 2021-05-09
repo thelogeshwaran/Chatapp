@@ -1,0 +1,29 @@
+.desktop__body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    background-color: #ededed;
+    position: relative;
+  }
+
+  
+.mob__body {
+    display: none;
+  }
+
+
+  @media (max-width: 768px) {
+    .desktop__body {
+      display: none;
+    }
+    
+    .mob__body {
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      background-color: #ededed;
+      position: relative;
+    }
+    
+  }
+  
