@@ -1,31 +1,28 @@
-.starred{
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    background-color: white;
-    overflow-y: hidden;
-    
+.starred {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: white;
+  overflow-y: hidden;
 }
 
-.starred__header{
-    display: flex;
-    height: 17%;
-    align-items: flex-end;
-    padding: 5%;
-    background-color: #00BFA5;
-    color: white;
+.starred__header {
+  display: flex;
+  height: 17%;
+  align-items: flex-end;
+  padding: 5%;
+  background-color: #00bfa5;
+  color: white;
 }
 
 .starred__header > h3 {
-    margin-left: 5%;
+  margin-left: 5%;
 }
 
-
-.starred__body{
-    height: 100%;
-    flex: 1;
-    background-color: white;
-    overflow-y: auto;
-    padding: 4% 5%;
+.starred__body {
+  height: 100%;
+  flex: 1;
+  background-color: white;
+  overflow-y: auto;
+  padding: 4% 5%;
 }
-

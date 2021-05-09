@@ -1,72 +1,70 @@
-.searchbox{
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+.searchbox {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
-.searchbox__header{
-    display: flex;
-    height: 15%;
-    align-items: flex-end;
-    padding: 5%;
-    background-color: #00BFA5;
-    color: white;
+.searchbox__header {
+  display: flex;
+  height: 15%;
+  align-items: flex-end;
+  padding: 5%;
+  background-color: #00bfa5;
+  color: white;
 }
 
 .searchbox__header > h2 {
-    margin-left: 5%;
+  margin-left: 5%;
 }
 
-.searchbox_container{
-    display: flex;
-    align-items: center;
-    background-color: white;
-    width: 95%;
-    height: 35px;
-    border-radius: 25px;
-    margin: 2% 2%;
-    padding: 20px;
-    
+.searchbox_container {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  width: 95%;
+  height: 35px;
+  border-radius: 25px;
+  margin: 2% 2%;
+  padding: 20px;
 }
-.searchbox__search{
-    display: flex;
-    align-items: center;
-    background-color: #f6f6f6;
-    height: 50px;
-    padding: 30px;
+.searchbox__search {
+  display: flex;
+  align-items: center;
+  background-color: #f6f6f6;
+  height: 50px;
+  padding: 30px;
 }
 
 .search__input {
-    width: 100%;
-    border: none;
-   font-size: 1.2rem;
+  width: 100%;
+  border: none;
+  font-size: 1.2rem;
 }
 
-
-.searchbox__body{
-    height: 100%;
-    flex: 1;
-    background-color: white;
-    overflow-y: auto;
-    padding: 4% 2%;
+.searchbox__body {
+  height: 100%;
+  flex: 1;
+  background-color: white;
+  overflow-y: auto;
+  padding: 4% 2%;
 }
 
-.searchbox__message{
-    position: relative;
-    font-size: 16px;
-    background-color: #dcf8c6;
-    width: fit-content;
-    padding: 8px;
-    border-radius: 10px;
-    margin: 3%;
-    padding-top: 0;
+.searchbox__message {
+  position: relative;
+  font-size: 16px;
+  background-color: #dcf8c6;
+  width: fit-content;
+  padding: 8px;
+  border-radius: 10px;
+  margin: 3%;
+  padding-top: 0;
 }
 
-.searchbox__name{
-    font-size: small;
-    font-weight: 700;
+.searchbox__name {
+  font-size: small;
+  font-weight: 700;
 }
 
-.searchbox__timestamp{
-    font-size: x-small;
-    margin-left: 10px;
+.searchbox__timestamp {
+  font-size: x-small;
+  margin-left: 10px;
 }

@@ -1,6 +1,6 @@
 import { Avatar, IconButton } from "@material-ui/core";
 import React, { useState, useEffect, useRef } from "react";
-import { db } from "../firebase";
+import { db } from "../Components/Firestore/firebase";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import SearchIcon from "@material-ui/icons/Search";
 import "./Chatbox.css";
@@ -16,11 +16,11 @@ import { usePopupProvider } from "../Context/PopupProvider";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import { useMessagesProvider } from "../Context/MessagesProvider";
-import Progressbar from "../Chatbox/Progressbar/Progressbar";
+import Progressbar from "../Components/Progressbar/Progressbar";
 import SendIcon from "@material-ui/icons/Send";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import Fade from '@material-ui/core/Fade';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import Fade from "@material-ui/core/Fade";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { Link } from "react-router-dom";
 
 function Chatbox() {
@@ -29,14 +29,18 @@ function Chatbox() {
   const [emojiOpen, setEmojiOpen] = useState(false);
   const { user } = useAuthProvider();
   const messagesEndRef = useRef(null);
-  const { setRightPopup, setSelected   } = usePopupProvider();
-  const { messages, room, setChatId,chatId, setUpload } = useMessagesProvider();
+  const { setRightPopup, setSelected } = usePopupProvider();
+  const {
+    messages,
+    room,
+    setChatId,
+    setUpload,
+  } = useMessagesProvider();
   const [anchorEl, setAnchorEl] = useState(null);
   const [anchor, setAnchor] = useState(null);
   const [error, setError] = useState(null);
   const [file, setFile] = useState(null);
-  const [ messageId, setMessageId] = useState("");
-  const [ reply, setReply ] = useState("");
+  const [messageId, setMessageId] = useState("");
 
   useEffect(() => {
     setChatId(roomId);
@@ -100,24 +104,23 @@ function Chatbox() {
       setFile(null);
     }
   }
-  const handleStar = () =>{
+  const handleStar = () => {
     db.collection("rooms")
-    .doc(roomId)
-    .collection("messages")
-    .doc(messageId)
-    .update({
-      starred : true
-    })
+      .doc(roomId)
+      .collection("messages")
+      .doc(messageId)
+      .update({
+        starred: true,
+      });
+  };
 
-  }
-
-  const handleDeleteMessage = (id)=>{
+  const handleDeleteMessage = (id) => {
     db.collection("rooms")
-    .doc(roomId)
-    .collection("messages")
-    .doc(messageId)
-    .delete()
-  }
+      .doc(roomId)
+      .collection("messages")
+      .doc(messageId)
+      .delete();
+  };
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -133,14 +136,17 @@ function Chatbox() {
     setAnchor(null);
   };
 
-
   console.log(messages);
   return (
     <div className="chatbox">
       <div className="chatbox__content">
         <div className="chatbox__heading">
           <div className="chatbox__backicon">
-            <Link to="/"><IconButton><ArrowBackIosIcon/></IconButton></Link>
+            <Link to="/">
+              <IconButton>
+                <ArrowBackIosIcon />
+              </IconButton>
+            </Link>
           </div>
           <Avatar
             src={room.url}
@@ -149,9 +155,7 @@ function Chatbox() {
           />
           <div className="chatbox__headingInfo">
             <h3>{room.name}</h3>
-            <p>
-              {room.description}
-            </p>
+            <p>{room.description}</p>
           </div>
           <div className="chatbox__hedingRight">
             <IconButton>
@@ -211,25 +215,49 @@ function Chatbox() {
                   >
                     <div className="chat__messageheader">
                       <div className="chat__name">{item.data.name}</div>
-                      <ExpandMoreIcon aria-controls="simple-menu" aria-haspopup="true"  onClick={(e)=>{handleExpand(e); setMessageId(item.id)}} style={{cursor:"pointer", marginLeft:"4%"}} />
+                      <ExpandMoreIcon
+                        aria-controls="simple-menu"
+                        aria-haspopup="true"
+                        onClick={(e) => {
+                          handleExpand(e);
+                          setMessageId(item.id);
+                        }}
+                        style={{ cursor: "pointer", marginLeft: "4%" }}
+                      />
                       <Menu
-                          id="simple-menu"
-                          anchorEl={anchor}
-                          keepMounted
-                          open={Boolean(anchor)}
-                          onClose={handleExpandClose}
+                        id="simple-menu"
+                        anchorEl={anchor}
+                        keepMounted
+                        open={Boolean(anchor)}
+                        onClose={handleExpandClose}
+                      >
+                        {/* <MenuItem onClick={()=>{handleExpandClose()}}>Reply</MenuItem> */}
+                        <MenuItem
+                          onClick={() => {
+                            handleStar();
+                            handleExpandClose();
+                          }}
                         >
-                          {/* <MenuItem onClick={()=>{handleExpandClose()}}>Reply</MenuItem> */}
-                          <MenuItem onClick={()=>{handleStar();handleExpandClose(); }}>Star Message</MenuItem>
-                          <MenuItem onClick={()=>{handleExpandClose(); handleDeleteMessage();}}>Delete Message</MenuItem>
-                        </Menu>
+                          Star Message
+                        </MenuItem>
+                        <MenuItem
+                          onClick={() => {
+                            handleExpandClose();
+                            handleDeleteMessage();
+                          }}
+                        >
+                          Delete Message
+                        </MenuItem>
+                      </Menu>
                     </div>
 
                     <div className="chat__messagedata">
                       {item.data.message.message}
                     </div>
                     <div className="chat__timestamp">
-                      {new Date(item.data.timeStamp?.toDate()).toLocaleTimeString()}
+                      {new Date(
+                        item.data.timeStamp?.toDate()
+                      ).toLocaleTimeString()}
                     </div>
                   </div>
                 );
@@ -241,21 +269,47 @@ function Chatbox() {
                     }`}
                   >
                     <div className="chat__expandicon">
-                      <ExpandMoreIcon  aria-controls="simple-menu" aria-haspopup="true"  onClick={(e)=>{handleExpand(e); setMessageId(item.id)}} style={{cursor:"pointer", marginLeft:"14%"}}/>
+                      <ExpandMoreIcon
+                        aria-controls="simple-menu"
+                        aria-haspopup="true"
+                        onClick={(e) => {
+                          handleExpand(e);
+                          setMessageId(item.id);
+                        }}
+                        style={{ cursor: "pointer", marginLeft: "14%" }}
+                      />
                       <Menu
-                          id="simple-menu"
-                          anchorEl={anchor}
-                          keepMounted
-                          open={Boolean(anchor)}
-                          onClose={handleExpandClose}
+                        id="simple-menu"
+                        anchorEl={anchor}
+                        keepMounted
+                        open={Boolean(anchor)}
+                        onClose={handleExpandClose}
+                      >
+                        {/* <MenuItem onClick={()=>{handleExpandClose()}}>Reply</MenuItem> */}
+                        <MenuItem
+                          onClick={() => {
+                            handleStar();
+                            handleExpandClose();
+                          }}
                         >
-                          {/* <MenuItem onClick={()=>{handleExpandClose()}}>Reply</MenuItem> */}
-                          <MenuItem onClick={()=>{handleStar();handleExpandClose(); }}>Star Message</MenuItem>
-                          <MenuItem onClick={()=>{handleExpandClose(); handleDeleteMessage();}}>Delete Message</MenuItem>
-                        </Menu>
+                          Star Message
+                        </MenuItem>
+                        <MenuItem
+                          onClick={() => {
+                            handleExpandClose();
+                            handleDeleteMessage();
+                          }}
+                        >
+                          Delete Message
+                        </MenuItem>
+                      </Menu>
                     </div>
                     <div className="chat__image">
-                      <img src={item.data.message.message} onClick={()=> setSelected(item.data.message.message)}  alt="image"></img>
+                      <img
+                        src={item.data.message.message}
+                        onClick={() => setSelected(item.data.message.message)}
+                        alt="image"
+                      ></img>
                     </div>
                   </div>
                 );

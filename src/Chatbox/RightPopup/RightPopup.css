@@ -1,17 +1,14 @@
-.rightbar{
-    height: 100vh;
-    width: 27vw;
-    background-color:#EDEDED;
-    transition: all ease 0.2s;
+.rightbar {
+  height: 100vh;
+  width: 27vw;
+  background-color: #ededed;
+  transition: all ease 0.2s;
 }
 
-
 @media (max-width: 768px) {
-
-    .rightbar{
-        width: 100vw;
-        position: absolute;
-        left: 0;
-    }
-
+  .rightbar {
+    width: 100vw;
+    position: absolute;
+    left: 0;
+  }
 }

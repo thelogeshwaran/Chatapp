@@ -7,7 +7,7 @@
   justify-content: space-between;
 }
 
-.sidebarChat__message{
+.sidebarChat__message {
   display: flex;
   flex: 1;
   align-items: center;
@@ -26,13 +26,12 @@
   margin-bottom: 5px;
 }
 
-.link{
+.link {
   text-decoration: none;
   color: black;
 }
 
-
-.sidebarChat__time{
+.sidebarChat__time {
   color: gray;
   padding-right: 3%;
 }

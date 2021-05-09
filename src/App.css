@@ -6,15 +6,12 @@
   overflow: hidden;
 }
 
-
-
-.desktop__body{
+.desktop__body {
   height: 100vh;
   width: 100vw;
   display: flex;
   background-color: #ededed;
   position: relative;
- 
 }
 
 ::-webkit-scrollbar {
@@ -30,21 +27,19 @@
   border-radius: 0px;
 }
 
-.mob__body{
+.mob__body {
   display: none;
 }
 
 @media (max-width: 768px) {
-
-  
-  .mob__body{
+  .mob__body {
     height: 100vh;
     width: 100vw;
     display: flex;
     background-color: #ededed;
     position: relative;
   }
-  .desktop__body{
+  .desktop__body {
     display: none;
   }
 }

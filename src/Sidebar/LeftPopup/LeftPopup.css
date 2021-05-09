@@ -1,0 +1,17 @@
+.left {
+  width: 30vw;
+  height: 100vh;
+  position: absolute;
+  background-color: #ededed;
+  transition: all ease 0.3s;
+}
+
+@media (max-width: 768px) {
+  .left {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background-color: #ededed;
+    transition: all ease 0.3s;
+  }
+}
