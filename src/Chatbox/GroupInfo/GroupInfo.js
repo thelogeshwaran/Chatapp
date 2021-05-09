@@ -17,6 +17,8 @@ import { useParams } from "react-router-dom";
 import { db } from "../../Components/Firestore/firebase";
 import { useMessagesProvider } from "../../Context/MessagesProvider";
 import Progressbar from "../../Components/Progressbar/Progressbar";
+import DeleteIcon from '@material-ui/icons/Delete';
+import { useNavigate } from "react-router-dom";
 
 function GroupInfo() {
   const [disabled, setDisabled] = useState(true);
@@ -29,15 +31,17 @@ function GroupInfo() {
   const { roomId } = useParams();
   const { setRightPopup, setSelected } = usePopupProvider();
   const { room, setUpload } = useMessagesProvider();
+  const navigate = useNavigate();
+
 
   useEffect(() => {
-    setName(room.name);
+    setName(room?.name);
     {
-      room.description
-        ? setDescription(room.description)
+      room?.description
+        ? setDescription(room?.description)
         : setDescription("Add Description");
     }
-    setUrl(room.url);
+    setUrl(room?.url);
   }, [room]);
 
   function inputHandler(e) {
@@ -83,6 +87,24 @@ function GroupInfo() {
       url: "",
     });
   };
+
+  const handleGrpDelete = () =>{
+    db.collection("rooms")
+    .doc(roomId)
+    .collection("messages")
+    .get()
+    .then((res) => {
+      res.forEach((element) => {
+        element.ref.delete();
+      });
+    });
+    navigate("/");
+    setRightPopup("")
+
+    db.collection("rooms")
+    .doc(roomId)
+    .delete()
+  }
 
   return (
     <div className="group">
@@ -164,7 +186,7 @@ function GroupInfo() {
             )}
           </div>
           <div className="group__created">
-            Created At - {new Date(room.createdAt?.toDate()).toLocaleString()}
+            Created At - {new Date(room?.createdAt?.toDate()).toLocaleString()}
           </div>
         </div>
         <div className="group__desinfo">
@@ -200,7 +222,7 @@ function GroupInfo() {
               <div className="accordion__head">Media</div>
             </AccordionSummary>
             <AccordionDetails>
-              <div>2</div>
+              <div>This feature will be added soon.</div>
             </AccordionDetails>
           </Accordion>
         </div>
@@ -211,12 +233,21 @@ function GroupInfo() {
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                eget.
+               Soon this feature will be added.
               </Typography>
             </AccordionDetails>
           </Accordion>
+        </div>
+
+        <div className="group__delete">
+            <div className="group__deleteHeader">
+                Delete Group
+            </div>
+            <div>
+                <IconButton>
+                    <DeleteIcon style={{color:"red"}} onClick={()=> handleGrpDelete() }/>
+                </IconButton>
+            </div>
         </div>
       </div>
     </div>
@@ -224,3 +255,5 @@ function GroupInfo() {
 }
 
 export default GroupInfo;
+
+

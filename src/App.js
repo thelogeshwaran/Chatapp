@@ -1,7 +1,7 @@
 import "./App.css";
 import Sidebar from "./Sidebar/Sidebar";
 import Chatbox from "./Chatbox/Chatbox";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Authentication from "./Authentication/Authentication";
 import { useAuthProvider } from "./Context/AuthProvider";
 import LeftPopup from "./Sidebar/LeftPopup/LeftPopup";
@@ -22,7 +22,7 @@ function App() {
       ) : (
         <div>
           <BrowserRouter>
-            <Switch>
+            <Routes>
               <Route path="/rooms/:roomId">
                 <div className="desktop__body">
                   <Sidebar />
@@ -44,7 +44,7 @@ function App() {
                   <LeftPopup />
                 </div>
               </Route>
-            </Switch>
+            </Routes>
           </BrowserRouter>
           {selected && <Modal />}
         </div>

@@ -149,13 +149,13 @@ function Chatbox() {
             </Link>
           </div>
           <Avatar
-            src={room.url}
+            src={room?.url}
             onClick={() => setRightPopup("GROUPINFO")}
             style={{ cursor: "pointer" }}
           />
           <div className="chatbox__headingInfo">
-            <h3>{room.name}</h3>
-            <p>{room.description}</p>
+            <h3>{room?.name}</h3>
+            <p>{room?.description}</p>
           </div>
           <div className="chatbox__hedingRight">
             <IconButton>
