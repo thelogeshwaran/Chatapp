@@ -262,6 +262,11 @@
 
 .input-block {
   margin-bottom: 20px;
+  
+}
+
+.password-block{
+  display: flex;
 }
 
 .input-block label {
@@ -283,16 +288,19 @@
   border-radius: 2px;
 }
 
-.form [type="submit"] {
-  opacity: 0;
+.btn-login {
+  opacity: 1;
   display: block;
   min-width: 120px;
-  margin: 30px auto 10px;
+  margin: 20px auto 10px;
   font-size: 18px;
   line-height: 40px;
   border-radius: 25px;
   border: none;
   transition: all 0.3s ease-out;
+}
+.guest{
+  margin-right: 60px;
 }
 
 .form-wrapper.is-active .form [type="submit"] {

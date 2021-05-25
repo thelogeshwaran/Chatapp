@@ -25,8 +25,6 @@ function RightPopup() {
     setComponent(item);
   }, [rightPopup]);
 
-  // console.log("component", component)
-
   return (
     <div
       className="rightbar"

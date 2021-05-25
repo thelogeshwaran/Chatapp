@@ -6,6 +6,8 @@ import { useAuthProvider } from "./Context/AuthProvider";
 import HomePage from "./Pages/HomePage";
 import ChatPage from "./Pages/ChatPage";
 import Modal from "./Components/Modal/Modal";
+import { ToastContainer } from "react-toastify"; 
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const { user } = useAuthProvider();
@@ -13,6 +15,7 @@ function App() {
 
   return (
     <div className="App">
+       <ToastContainer limit={3} />
       {!user ? (
         <Authentication />
       ) : (

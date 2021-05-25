@@ -4,8 +4,9 @@ import { FcGoogle } from "react-icons/fc";
 import { auth } from "../Components/Firestore/firebase";
 import firebase from "firebase";
 import { useAuthProvider } from "../Context/AuthProvider";
-import Snackbar from "@material-ui/core/Snackbar";
-import MuiAlert, { AlertProps } from "@material-ui/lab/Alert";
+import { toast } from "react-toastify";
+import { AiFillCamera, AiFillEye } from "react-icons/ai";
+import { AiFillEyeInvisible } from "react-icons/ai";
 
 function Authentication() {
   const [email, setEmail] = useState("");
@@ -13,8 +14,8 @@ function Authentication() {
   const [name, setName] = useState("");
   const { user, setUser } = useAuthProvider();
   const [active, setActive] = useState(true);
-  const [open, setOpen] = useState(false);
-  const [error, setError] = useState("");
+  const [passwordShow, setPasswordShow] = useState("password");
+  
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
@@ -30,19 +31,17 @@ function Authentication() {
     setName("");
     setEmail("");
     setPassword("");
-    setError("");
   };
 
   const handleLogin = (event) => {
     event.preventDefault();
     auth
       .signInWithEmailAndPassword(email, password)
-      .then((user) => {
+      .then(() => {
         clearInputs();
       })
       .catch((error) => {
-        setError(error.message);
-        handleClick();
+        toast.error(error.message);
       });
   };
 
@@ -60,8 +59,7 @@ function Authentication() {
           });
       })
       .catch((error) => {
-        setError(error.message);
-        handleClick();
+        toast.error(error.message);
       });
   };
 
@@ -69,17 +67,13 @@ function Authentication() {
     auth
       .signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .catch((error) => {
-        setError(error.message);
-        handleClick();
+        toast.error(error.message);
       });
   };
-
-  function Alert(props: AlertProps) {
-    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  function guestaccount(){
+    setEmail("admin@gmail.com");
+    setPassword("admin@45")
   }
-  const handleClick = () => {
-    setOpen(true);
-  };
 
   console.log(user);
   return (
@@ -122,22 +116,46 @@ function Authentication() {
                   required
                 ></input>
               </div>
-              <div className="input-block">
+              <div className="input-block ">
                 <label for="login-password">Password</label>
+                <div className="password-block">
                 <input
                   id="login-password"
-                  type="password"
+                  type={passwordShow}
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 ></input>
-              </div>
-              <div>
-                Credentials : Email - admin@gmail.com
-                <br /> password : admin@45
+                <div>
+                {passwordShow === "password" ? (
+                    <AiFillEye
+                      onClick={() => setPasswordShow("text")}
+                      style={{
+                        margin: "-20px 0px -25px -30px",
+                        height: "20px",
+                        width: "20px",
+                        cursor: "pointer",
+                      }}
+                    />
+                  ) : (
+                    <AiFillEyeInvisible
+                      onClick={() => setPasswordShow("password")}
+                      style={{
+                        margin: "-20px 0px -25px -30px",
+                        height: "20px",
+                        width: "20px",
+                        cursor: "pointer",
+                      }}
+                    />
+                  )}
+                </div>
+                </div>
               </div>
               <button type="submit" className="btn-login">
                 Login
+              </button>
+              <button type="button" className="btn-login guest" onClick={()=> guestaccount()}>
+                Guest
               </button>
             </form>
           </div>
@@ -187,30 +205,44 @@ function Authentication() {
               </div>
               <div className="input-block">
                 <label for="signup-password">Password</label>
+                <div className="password-block">
                 <input
                   id="signup-password"
-                  type="password"
+                  type={passwordShow}
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 ></input>
+                {passwordShow === "password" ? (
+                    <AiFillEye
+                      onClick={() => setPasswordShow("text")}
+                      style={{
+                        margin: "20px 0px -25px -30px",
+                        height: "20px",
+                        width: "20px",
+                        cursor: "pointer",
+                      }}
+                    />
+                  ) : (
+                    <AiFillEyeInvisible
+                      onClick={() => setPasswordShow("password")}
+                      style={{
+                        margin: "20px 0px -25px -30px",
+                        height: "20px",
+                        width: "20px",
+                        cursor: "pointer",
+                      }}
+                    />
+                  )}
+                </div>
               </div>
-              <button type="submit" className="btn-signup">
+              <button type="submit" className="btn-signup btn-login">
                 Continue
               </button>
             </form>
           </div>
         </div>
       </section>
-      <Snackbar
-        open={open}
-        autoHideDuration={3000}
-        onClose={() => setOpen(false)}
-      >
-        <Alert onClose={() => setOpen(false)} severity="warning">
-          {error}
-        </Alert>
-      </Snackbar>
     </div>
   );
 }
