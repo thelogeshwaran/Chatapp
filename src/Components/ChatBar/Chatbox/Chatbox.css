@@ -1,0 +1,26 @@
+.chatbox {
+  display: flex;
+  flex-direction: row;
+  flex: 0.7;
+}
+.chatbox__content {
+  display: flex;
+  flex-direction: column;
+}
+
+.chatbox__body {
+  flex: 1;
+  background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
+  background-position: center;
+  background-repeat: repeat;
+  padding: 30px;
+  overflow: auto;
+}
+
+@media (max-width: 768px) {
+  .chatbox {
+    flex: 1;
+    width: 100vw;
+    box-sizing: border-box;
+  }
+}

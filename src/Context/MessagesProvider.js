@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { db } from "../Components/Firestore/firebase";
+import { db } from "../Components/Common/Firestore/firebase";
 
 const MessagesContext = createContext();
 

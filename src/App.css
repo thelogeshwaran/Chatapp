@@ -7,8 +7,6 @@
   position: relative;
 }
 
-
-
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -21,8 +19,3 @@
   background-color: #90a4ae;
   border-radius: 0px;
 }
-
-
-
-
-

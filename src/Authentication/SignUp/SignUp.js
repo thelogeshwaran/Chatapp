@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./SignUp.css";
 import { FcGoogle } from "react-icons/fc";
-import { auth } from "../../Components/Firestore/firebase";
+import { auth } from "../../Components/Common/Firestore/firebase";
 import firebase from "firebase";
 import { useAuthProvider } from "../../Context/AuthProvider";
 import { toast } from "react-toastify";
@@ -13,7 +13,6 @@ function SignUp({ active, setActive }) {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const { setUser } = useAuthProvider();
-
   const [passwordShow, setPasswordShow] = useState("password");
 
   useEffect(() => {
