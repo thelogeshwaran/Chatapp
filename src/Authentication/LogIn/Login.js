@@ -3,7 +3,6 @@ import "./Login.css";
 import { FcGoogle } from "react-icons/fc";
 import { auth } from "../../Components/Common/Firestore/firebase";
 import firebase from "firebase";
-import { useAuthProvider } from "../../Context/AuthProvider";
 import { toast } from "react-toastify";
 import { AiFillEye } from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";

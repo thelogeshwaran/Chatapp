@@ -5,11 +5,13 @@ import App from './App';
 import { AuthProvider } from "./Context/AuthProvider";
 import { PopupProvider } from "./Context/PopupProvider";
 import { MessagesProvider } from "./Context/MessagesProvider";
+import { BrowserRouter } from "react-router-dom";
 
 
 
 ReactDOM.render(
   <React.StrictMode>
+    <BrowserRouter>
     <AuthProvider>
       <PopupProvider>
         <MessagesProvider>
@@ -17,6 +19,7 @@ ReactDOM.render(
         </MessagesProvider>
       </PopupProvider>
     </AuthProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
