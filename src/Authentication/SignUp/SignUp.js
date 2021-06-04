@@ -12,18 +12,8 @@ function SignUp({ active, setActive }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const { setUser } = useAuthProvider();
   const [passwordShow, setPasswordShow] = useState("password");
 
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        setUser(user);
-      } else {
-        setUser(false);
-      }
-    });
-  }, []);
 
   const clearInputs = () => {
     setName("");

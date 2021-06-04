@@ -11,19 +11,7 @@ import { AiFillEyeInvisible } from "react-icons/ai";
 function Login({ active, setActive }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setUser } = useAuthProvider();
   const [passwordShow, setPasswordShow] = useState("password");
-
-  console.log(active);
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        setUser(user);
-      } else {
-        setUser(false);
-      }
-    });
-  }, []);
 
   const clearInputs = () => {
     setEmail("");
