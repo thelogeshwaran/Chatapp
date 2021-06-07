@@ -51,7 +51,7 @@ function ChatContainer({ setReply }) {
     db.collection("rooms")
       .doc(roomId)
       .collection("messages")
-      .doc(message)
+      .doc(message.id)
       .update({
         starred: true,
       });
