@@ -144,6 +144,7 @@ function Sidebar() {
             type="text"
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search a chat"
+            value= {search}
           />
         </div>
       </div>
